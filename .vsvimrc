@@ -1,0 +1,73 @@
+" =================================================================================
+" VsVim Configuration - Visual Studio Integration
+" =================================================================================
+"
+" This file configures VsVim to integrate smoothly with Visual Studio.
+"
+" IMPORTANT: For this configuration to work, you must set the keyboard handling
+" priority in Visual Studio's options. Go to:
+"   Tools -> Options -> VsVim -> Keyboard -> "Handle the following keys": VsVim
+"
+" --- Understanding `map` and `unmap` ---
+"
+" `map` - Creates a keyboard shortcut.
+"   Syntax: map <keys_to_press> <command_to_execute>
+"   - This tells VsVim: "When I press these keys, run this command."
+"   - The `:vsc` prefix executes a built-in Visual Studio command.
+"   - This is the most reliable method for ensuring VS shortcuts work as expected.
+"
+" `unmap` - Deletes a keyboard shortcut.
+"   Syntax: unmap <keys_to_remove>
+"   - This tells VsVim to forget any special behavior for a key combination.
+"   - It is useful for restoring Vim's default behavior if a mapping is causing
+"     a conflict. It does NOT pass keys to Visual Studio if VsVim is handling
+"     them, which can cause "No such mapping" errors if used incorrectly.
+"
+" =================================================================================
+
+" --- Visual Studio Shortcut Mappings ---
+
+" File Operations
+map <C-s>       :vsc File.Save<CR>
+
+" Feature and Code Search
+map <C-q>       :vsc Tools.FeatureSearch<CR>
+map <C-S-p>     :vsc Tools.FeatureSearch<CR>
+map <C-t>       :vsc Edit.GoToAll<CR>
+
+" Go To Line
+map <C-g>       :vsc Edit.GoTo<CR>
+
+" Find and Replace
+map <C-f>       :vsc Edit.Find<CR>
+map <C-h>       :vsc Edit.Replace<CR>
+map <C-S-f>     :vsc Edit.FindinFiles<CR>
+map <C-S-h>     :vsc Edit.ReplaceinFiles<CR>
+
+" Window Management
+map <C-w>       :vsc Window.CloseDocumentWindow<CR>
+
+" Clipboard Operations
+map <C-c>       :vsc Edit.Copy<CR>
+map <C-x>       :vsc Edit.Cut<CR>
+map <C-Insert>  :vsc Edit.Copy<CR>
+map <S-Insert>  :vsc Edit.Paste<CR>
+
+" Code Navigation
+map <F12>       :vsc Edit.GoToDefinition<CR>
+map <S-F12>     :vsc Edit.FindAllReferences<CR>
+map <C-F12>     :vsc Edit.GoToImplementation<CR>
+map <C-=>       :vsc View.NavigateBackward<CR>
+map <C-S-=>     :vsc View.NavigateForward<CR>
+
+" Building & Debugging
+map <F5>        :vsc Debug.Start<CR>
+map <F9>        :vsc Debug.ToggleBreakpoint<CR>
+map <C-S-b>     :vsc Build.BuildSolution<CR>
+
+" Editing & Refactoring
+map <F2>        :vsc Refactor.Rename<CR>
+map <C-k><C-c>  :vsc Edit.CommentSelection<CR>
+map <C-k><C-u>  :vsc Edit.UncommentSelection<CR>
+map <C-r><C-m>  :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
+map <C-r><C-i>  :vsc EditorContextMenus.CodeWindow.QuickActionsForPosition<CR>
